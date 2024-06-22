@@ -1,0 +1,60 @@
+<!-- Navbar: The top navigation bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <!-- Brand Logo: Social Network -->
+        <a class="navbar-brand" href="#">Social Network</a>
+
+        <!-- Hamburger Button: Only shows on mobile -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Items: Contain both static and dynamic items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Authentication Check: If the user is authenticated -->
+                {% if user.is_authenticated %}
+                    <!-- Friend Dropdown: Show list of friends -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Friends
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- Loop Through Friends -->
+                            {% for friend in friends %}
+                                <a class="dropdown-item" href="{% url 'user_home' username=friend.user.username %}">{{ friend.user.username }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+
+                    <!-- Display Username: Show 'Hello [Username]' -->
+                    <li class="nav-item">
+                        <span class="navbar-text">Hello {{ user.username }}</span>
+                    </li>
+
+                    <!-- User Home: Link to user's home page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user_home' username=user.username %}">My Home Page</a>
+                    </li>
+
+                    <!-- Logout: Link to logout -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+
+                <!-- If User is Not Authenticated -->
+                {% else %}  
+                    <!-- Register: Link to registration page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+
+                    <!-- Login: Link to login page -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

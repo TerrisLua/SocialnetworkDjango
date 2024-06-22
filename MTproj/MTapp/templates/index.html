@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata for character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page title -->
+    <title>Home Page</title>
+
+    <!-- Importing Bootstrap CSS for styling -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Hero Section: Main header and introduction -->
+    <section class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Welcome</h1>
+            <p class="lead">Connect. Share. Engage.</p>
+        </div>
+    </section>
+
+    <!-- Navbar: Imported from another HTML file -->
+    {% include 'navbar.html' %}
+
+    <!-- Importing Javascript libraries: jQuery, Popper.js and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

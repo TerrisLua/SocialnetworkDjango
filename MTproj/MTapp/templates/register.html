@@ -1,0 +1,54 @@
+{% load bootstrap4 %}
+
+{% block content %}
+
+<!-- Main Container -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Heading -->
+            <h1 class="text-center mb-4">Register</h1>
+
+            <!-- Card for Registration -->
+            <div class="card">
+                <div class="card-body">
+
+                    <!-- Success Alert: Displayed when the user is successfully registered -->
+                    {% if registered %}
+                        <div class="alert alert-success" role="alert">
+                            <strong>Thank you for registering.</strong>
+                        </div>
+                    
+                    <!-- Otherwise, show the Registration Form -->
+                    {% else %}
+                        <div class="alert alert-primary" role="alert">
+                            <strong>Register here:</strong>
+                        </div>
+
+                        <!-- Registration Form -->
+                        <form id="user_form" method="post" action="/register/" enctype="multipart/form-data">
+                            <!-- CSRF Token for Security -->
+                            {% csrf_token %}
+
+                            <!-- User Form Fields: Dynamically loaded -->
+                            <div class="form-group">
+                                {{ user_form.as_p }}
+                            </div>
+
+                            <!-- Profile Form Fields: Dynamically loaded -->
+                            <div class="form-group">
+                                {{ profile_form.as_p }}
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

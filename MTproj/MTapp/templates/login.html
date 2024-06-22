@@ -1,0 +1,41 @@
+{% load bootstrap4 %}
+
+{% block content %}
+
+<!-- Heading: Displays the main title of the login page -->
+<h1 class="text-center mb-4">Login</h1>
+
+<!-- Login Form: Starts the main container for the login form -->
+<div class="container">
+    <!-- Row and Column Grids: Center align the form within the grid -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- Card: A Bootstrap card to wrap around the form for better styling -->
+            <div class="card">
+                <!-- Card Body: The main content area of the card -->
+                <div class="card-body">
+                    <!-- Form Element: The actual form starts here -->
+                    <form id="login_form" method="post" action="/login/">
+                        {% csrf_token %} <!-- CSRF Token: For Django form security -->
+                        <!-- Username Input: A fieldset for the username -->
+                        <div class="form-group mb-4">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
+                        </div>
+                        <!-- Password Input: A fieldset for the password -->
+                        <div class="form-group mt-4">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
+                        </div>
+                        <!-- Login Button: The submit button for the form -->
+                        <button type="submit" class="btn btn-primary btn-block mt-4">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
